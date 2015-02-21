@@ -209,7 +209,7 @@ index.number_of_replicas: {{ elasticsearch_number_of_replicas }}
 
 # Set both 'bind_host' and 'publish_host':
 #
-#network.host: 192.168.0.1
+network.host: {{ elasticsearch_network_host }}
 
 # Set a custom port for the node to node communication (9300 by default):
 #
