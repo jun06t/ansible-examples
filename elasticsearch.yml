@@ -1,0 +1,8 @@
+---
+- name: 'Elasticsearch'
+  hosts: elasticsearch
+  sudo: yes
+  roles:
+    - common
+    - java8
+    - elasticsearch

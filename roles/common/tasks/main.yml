@@ -1,0 +1,7 @@
+---
+- name: Install common packages for ubuntu
+  apt: name={{ item }} state=latest
+  with_items:
+    - curl
+    - git
+  when: ansible_distribution == "Ubuntu"

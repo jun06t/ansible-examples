@@ -1,0 +1,5 @@
+---
+elasticsearch_heap_size: '512m'
+elasticsearch_cluster_name: 'test'
+elasticsearch_number_of_shards: 4
+elasticsearch_number_of_replicas: 1
