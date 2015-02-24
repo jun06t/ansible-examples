@@ -1,7 +1,9 @@
 ---
 - name: Install common packages for ubuntu
-  apt: name={{ item }} state=latest
+  apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - curl
+    - wget
     - git
+    - unzip
   when: ansible_distribution == "Ubuntu"

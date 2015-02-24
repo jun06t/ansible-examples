@@ -1,0 +1,6 @@
+---
+nginx_version: '1.7.10'
+nginx_source_url: 'http://nginx.org/download/nginx-{{ nginx_version }}.tar.gz'
+nginx_configure_flags:
+  - '--with-http_ssl_module'
+  - '--with-http_spdy_module'

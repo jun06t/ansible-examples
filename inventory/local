@@ -8,3 +8,7 @@ default
 
 [mariadb]
 default
+
+[nginx]
+default
+

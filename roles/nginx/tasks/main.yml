@@ -1,0 +1,36 @@
+--- 
+- name: Install dependencies
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - build-essential
+    - libpcre3
+    - libpcre3-dev
+    - libssl-dev
+
+- name: Download nginx src
+  get_url:
+    url: "{{ nginx_source_url }}"
+    dest: /usr/local/src/nginx-{{ nginx_version }}.tar.gz
+
+- include: "modules.yml"
+
+- name: Unpack source
+  command: tar xvzf /usr/local/src/nginx-{{ nginx_version }}.tar.gz -C /usr/local/src creates=/usr/local/src/nginx-{{ nginx_version }}
+
+- name: Compile the Nginx source
+  shell: >
+    cd /usr/local/src/nginx-{{ nginx_version }} &&
+    ./configure {{ nginx_configure_flags | join(" ") }} &&
+    make &&
+    make install
+
+- name: Send init script
+  template:
+    src: nginx.init
+    dest: /etc/init.d/nginx
+    mode: 0755
+  notify: restart nginx
+
+- name: Register Nginx as a service
+  service: name=nginx state=started enabled=yes
+
