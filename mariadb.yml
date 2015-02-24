@@ -1,0 +1,8 @@
+---
+- name: 'MariaDB'
+  hosts: mariadb
+  sudo: yes
+  roles:
+    - common
+    - mariadb
+

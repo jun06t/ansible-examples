@@ -5,3 +5,6 @@ web3
 
 [jenkins]
 default
+
+[mariadb]
+default

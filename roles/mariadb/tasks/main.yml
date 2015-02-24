@@ -1,0 +1,16 @@
+---
+- name: Install dependencies
+  apt: name=software-properties-common state=latest
+
+- name: Install MariaDB repo key
+  apt_key: url={{ mariadb_key_url }} state=present
+
+- name: Add MariaDB repo
+  apt_repository: repo='{{ mariadb_repo_url }}' state=present
+
+- name: Install MariaDB
+  apt: name=mariadb-server state=latest update_cache=true force=yes
+
+- name: Ensure MariaDB is running
+  service: name=mysql state=started enabled=yes
+

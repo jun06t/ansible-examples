@@ -1,0 +1,4 @@
+---
+mariadb_key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0xcbcb082a1bb943db'
+mariadb_repo_url: 'deb http://ftp.yz.yamagata-u.ac.jp/pub/dbms/mariadb/repo/10.0/ubuntu trusty main'
+
