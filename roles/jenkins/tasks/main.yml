@@ -1,0 +1,13 @@
+---
+- name: Install Jenkins repo key
+  apt_key: url={{ jenkins_key_url }} state=present
+
+- name: Install Jenkins repo
+  apt_repository: repo='{{ jenkins_repo_url }}' state=present
+
+- name: Install Jenkins
+  apt: name=jenkins state=latest
+
+- name: Ensure Jenkins is running
+  service: name=jenkins state=started enabled=yes
+

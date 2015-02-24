@@ -1,0 +1,8 @@
+---
+- name: 'Jenkins'
+  hosts: jenkins
+  sudo: yes
+  roles:
+    - common
+    - java8
+    - jenkins

@@ -1,9 +1,9 @@
 ---
 - name: Add ElasticSearch apt key
-  apt_key: url=https://packages.elasticsearch.org/GPG-KEY-elasticsearch state=present
+  apt_key: url={{ elasticsearch_key_url }} state=present
 
 - name: Add ElasticSearch repository
-  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main' state=present
+  apt_repository: repo='{{ elasticsearch_repo_url }}' state=present
 
 - name: Install ElasticSearch
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600

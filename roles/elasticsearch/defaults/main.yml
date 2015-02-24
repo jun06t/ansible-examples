@@ -1,4 +1,7 @@
 ---
+elasticsearch_key_url: 'https://packages.elasticsearch.org/GPG-KEY-elasticsearch'
+elasticsearch_repo_url: 'deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main'
+
 elasticsearch_heap_size: '512m'
 elasticsearch_cluster_name: 'test'
 elasticsearch_number_of_shards: 5
