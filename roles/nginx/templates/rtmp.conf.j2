@@ -1,0 +1,13 @@
+
+rtmp {
+    server {
+        listen {{ nginx_rtmp_module_port }};
+        chunk_size 4096;
+
+        application live {
+            play {{ nginx_rtmp_module_video_path }};
+            live on;
+            record off;
+        }
+    }
+}

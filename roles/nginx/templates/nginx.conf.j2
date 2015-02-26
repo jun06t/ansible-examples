@@ -1,0 +1,35 @@
+
+#user  nobody;
+worker_processes  {{ nginx_worker_processes }};
+
+#pid        logs/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+include       {{ nginx_conf_path }}/conf.d/*.conf;
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  {{ nginx_keepaliive_timeout }};
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+

@@ -1,6 +1,16 @@
 ---
 nginx_version: '1.7.10'
 nginx_source_url: 'http://nginx.org/download/nginx-{{ nginx_version }}.tar.gz'
+nginx_conf_path: '/usr/local/nginx/conf'
+nginx_worker_processes: 1
+nginx_keepaliive_timeout: 65
+
+nginx_rtmp_module_url: 'https://github.com/arut/nginx-rtmp-module/archive/master.zip'
+nginx_rtmp_module_port: 1935
+nginx_rtmp_module_video_path: '/usr/local/nginx/html/video'
+
 nginx_configure_flags:
   - '--with-http_ssl_module'
   - '--with-http_spdy_module'
+  - '--add-module=../nginx-rtmp-module-master'
+

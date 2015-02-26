@@ -1,2 +1,19 @@
 ---
+- name: Create conf.d directory
+  shell: mkdir -p {{ nginx_conf_path }}/conf.d
+
+- name: Download rtmp module
+  get_url:
+    url: "{{ nginx_rtmp_module_url }}"
+    dest: /usr/local/src/nginx-rtmp-module.zip
+
+- name: Unpack rtmp module
+  command: unzip /usr/local/src/nginx-rtmp-module.zip -d /usr/local/src/ creates=/usr/local/src/nginx-rtmp-module-master
+
+- name: Send rtmp conf script
+  template:
+    src: rtmp.conf.j2
+    dest: "{{ nginx_conf_path }}/conf.d/rtmp.conf"
+    mode: 0755
+  notify: restart nginx
 

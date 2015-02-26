@@ -25,9 +25,16 @@
     make install
 
 - name: Send init script
-  template:
+  copy:
     src: nginx.init
     dest: /etc/init.d/nginx
+    mode: 0755
+  notify: restart nginx
+
+- name: Send conf script
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_path }}/nginx.conf"
     mode: 0755
   notify: restart nginx
 
