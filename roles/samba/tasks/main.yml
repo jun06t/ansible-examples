@@ -1,0 +1,20 @@
+---
+- name: Install samba
+  apt: name=samba state=latest update_cache=yes
+
+- name: Create sharing directory
+  shell: >
+    mkdir -p {{ samba_share_directory_path }} &&
+    chmod 777 {{ samba_share_directory_path }}
+  args:
+    creates: "{{ samba_share_directory_path }}"
+
+- name: Send configuration
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+  notify: restart samba
+
+- name: Start samba
+  service: name=smbd state=started enabled=yes
+

@@ -12,3 +12,6 @@ default
 [nginx]
 default
 
+[samba]
+default
+

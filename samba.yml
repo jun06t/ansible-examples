@@ -1,0 +1,8 @@
+---
+- name: 'Samba'
+  hosts: samba
+  sudo: yes
+  roles:
+    - common
+    - samba
+

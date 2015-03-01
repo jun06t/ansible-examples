@@ -1,0 +1,8 @@
+samba_share_directory_path: '/var/local/share'
+samba_share_directory_name: 'share'
+
+samba_config_writable: 'yes'
+samba_config_guest_ok: 'yes'
+samba_config_create_mode: '0777'
+samba_config_directory_mode: '0777'
+samba_config_share_mode: 'yes'
